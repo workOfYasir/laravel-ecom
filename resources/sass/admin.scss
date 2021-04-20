@@ -18,6 +18,10 @@ body {
   .pr-md-4, .px-md-4{
       margin-left: auto !important;
   }
+  .ck.ck-content{
+    height: 300px;
+    overflow-y: scroll;
+}
   .feather {
     width: 16px;
     height: 16px;

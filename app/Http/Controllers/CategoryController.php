@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(10);
         return view('admin.categories.index',compact('categories'));
     }
 
@@ -25,7 +25,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.categories.create',compact('categories'));
     }
 
     /**
@@ -36,7 +37,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required|min:5',
+            'slug'=>'required|min:5|unique:categories'
+            ]);
+        $categories = Category::create($request->only('title','description','slug'));
+        $categories->childrens()->attach($request->parent_id);
+        return back()->with('message','Category Added Successfully!');
     }
 
     /**
@@ -58,7 +65,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $categories = Category::all();
+        return view('admin.categories.create',['categories'=>$categories,'category'=>$category]);
     }
 
     /**
@@ -70,7 +78,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->title = $request->title;
+        $category->description = $request->description;
+        $category->slug = $request->slug;
+        $saved = $category->save();
+        $saved->childrens()->detach();
+        $saved ->childrens()->attach($request->parent_id);
+        return back()->with('message','Category is Updated');
     }
 
     /**

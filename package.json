@@ -10,7 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "axios": "^0.21.1",
         "bootstrap": "^4.0.0",
         "jquery": "^3.2",
         "laravel-mix": "^6.0.6",
@@ -22,6 +22,8 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "feather-icons": "^4.28.0"
+        "@ckeditor/ckeditor5-build-classic": "^27.0.0",
+        "feather-icons": "^4.28.0",
+        "select2": "^4.1.0-rc.0"
     }
 }

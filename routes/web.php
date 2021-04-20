@@ -31,10 +31,11 @@ Route::get('/home',function () {
 
 
 
-Route::group(['as'=>'admin.','middleware'=>['auth','admin'],'prefix'=>'admin'],function(){
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::group(['as'=>'admin.','middleware'=>['auth','admin']],function(){
+    Route::group(['prefix'=>'admin'],function(){
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::resource('product', ProductController::class);
+        Route::resource('category', CategoryController::class);
+    });
     Route::get('logout', [LoginController::class,'logout'])->name('logout');
-    Route::resource('product', ProductController::class);
-    Route::resource('category', CategoryController::class);
-
 });

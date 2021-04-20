@@ -12,7 +12,7 @@
     </ul>
   </header>
 
-  <div class="container-fluid">
+  <div class="container-fluid border-bottom m-2">
     <div class="row">
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
         <div class="position-sticky pt-3">

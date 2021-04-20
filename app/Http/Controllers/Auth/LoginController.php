@@ -39,6 +39,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     public function logout(Request $request) {
+        // echo 'a';
         Auth::logout();
         return redirect('/login');
       }
@@ -54,7 +55,7 @@ class LoginController extends Controller
     {
        if($user->role->name=='admin')
        {
-           $this->redirectTo='/admin';
+           $this->redirectTo='/admin/dashboard';
         }
     }
 }

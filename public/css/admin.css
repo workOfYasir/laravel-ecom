@@ -20,6 +20,11 @@ body {
   margin-left: auto !important;
 }
 
+.ck.ck-content {
+  height: 300px;
+  overflow-y: scroll;
+}
+
 .feather {
   width: 16px;
   height: 16px;
